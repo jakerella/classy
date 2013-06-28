@@ -1,6 +1,6 @@
 console.log("Starting server...");
 
-var         pkg = require('../package.json');
+var         pkg = require("../package.json");
         express = require("express"),
            http = require("http"),
          routes = require("./modules/routes.js");
@@ -9,7 +9,7 @@ var app = express();
 
 // Config and middleware
 app.configure(function () {
-    process.env["NODE_ENV"] = (process.env["NODE_ENV"] || "production");
+    process.env.NODE_ENV = (process.env.NODE_ENV || "production");
     app.set("port", process.env.PORT || 5000);
     app.set("views", __dirname + "/views");
     app.set("view engine", "ejs");
@@ -40,5 +40,5 @@ app.post("/", routes.index);
 
 // Start server
 http.createServer(app).listen(app.get("port"), function () {
-  console.log(pkg.name + " server listening on port " + app.get("port"));
+    console.log(pkg.name + " server listening on port " + app.get("port"));
 });

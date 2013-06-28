@@ -5,7 +5,6 @@ var AUTH_COOKIE = "classy_token";
 exports.hasToken = function (req, res, next) {
     if (req.cookies[AUTH_COOKIE]) {
         req.session.token = req.cookies[AUTH_COOKIE];
-        pivotal.useToken(req.cookies[AUTH_COOKIE]);
         next();
     } else if (req.xhr) {
         res.send(403, { error: "You will need to login before accessing this resource" });
@@ -14,6 +13,6 @@ exports.hasToken = function (req, res, next) {
     }
 };
 
-exports.index = function(req, res, next) {
+exports.index = function(req, res) {
     res.render("index", { "title": "Classy Home" });
 };
