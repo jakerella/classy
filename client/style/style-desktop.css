@@ -31,7 +31,7 @@
 	h3
 	{
 		font-size: 1.35em;
-		margin: 0 0 2.25em 0;
+		margin: 0 0 1em 0;
 	}
 
 	.pad-right
@@ -61,19 +61,26 @@
 
 		body.right-sidebar .content
 		{
-			padding-right: 1.75em;
+            width: 890px;
+            float: left;
 		}
+
+        body.right-sidebar .sidebar
+        {
+            width: 350px;
+            float: left;
+        }
 	
 	.button
 	{
-		font-size: 1.35em;
-		padding: 0.8em 1.5em 0.8em 1.5em;
+		font-size: 1.15em;
+		padding: 0.5em 1em 0.5em 1em;
 	}
 
 		.button-big
 		{
-			font-size: 2.25em;
-			padding: 0.8em 0.9em 0.8em 0.9em;
+			font-size: 1.5em;
+			padding: 0.4em 0.6em 0.4em 0.6em;
 		}
 	
 	.box
