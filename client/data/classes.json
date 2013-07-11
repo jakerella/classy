@@ -1,0 +1,32 @@
+{
+    "classes": [
+        {
+            "id": "js101",
+            "name": "JavaScript 101",
+            "date": "2013-07-30",
+            "students": 5,
+            "max": 10
+        },
+        {
+            "id": "advjs",
+            "name": "Advanced JavaScript",
+            "date": "2013-08-01",
+            "students": 9,
+            "max": 10
+        },
+        {
+            "id": "intnode",
+            "name": "Intermediate Node.js",
+            "date": "2013-08-17",
+            "students": 10,
+            "max": 10
+        },
+        {
+            "id": "html5",
+            "name": "HTML5 APIs",
+            "date": "2013-09-01",
+            "students": 0,
+            "max": 10
+        },
+    ]
+}
