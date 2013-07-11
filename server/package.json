@@ -1,0 +1,13 @@
+{
+    "name": "classy",
+    "description": "A class schedule and registration system.",
+    "version": "0.0.1",
+    "private": true,
+    "engines": {
+        "node": "0.10.x"
+    },
+    "dependencies": {
+        "express": "~3",
+        "ejs": "~0.8"
+    }
+}
