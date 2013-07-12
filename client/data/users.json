@@ -1,0 +1,36 @@
+{
+    "users": [
+        {
+            "id": "13",
+            "name": "Jordan Kasper",
+            "type": "Instructor",
+            "courses": [
+                "advjs", "intnode"
+            ]
+        },
+        {
+            "id": "23",
+            "name": "Mr. T",
+            "type": "Student",
+            "courses": [
+                "intnode"
+            ]
+        },
+        {
+            "id": "37",
+            "name": "Vincent Price",
+            "type": "Student",
+            "courses": [
+                "js101", "html5"
+            ]
+        },
+        {
+            "id": "41",
+            "name": "Bob Barker",
+            "type": "Student",
+            "courses": [
+                
+            ]
+        },
+    ]
+}
