@@ -1,36 +1,47 @@
 {
     "users": [
         {
-            "id": "13",
+            "id": 13,
             "name": "Jordan Kasper",
             "type": "Instructor",
             "courses": [
                 "advjs", "intnode"
-            ]
+            ],
+            "fee": 1000
         },
         {
-            "id": "23",
+            "id": 23,
             "name": "Mr. T",
             "type": "Student",
             "courses": [
-                "intnode"
+                {
+                    "id": "intnode",
+                    "paid": false
+                }
             ]
         },
         {
-            "id": "37",
+            "id": 37,
             "name": "Vincent Price",
             "type": "Student",
             "courses": [
-                "js101", "html5"
+                {
+                    "id": "js101",
+                    "paid": true
+                },
+                {
+                    "id": "hmlt5",
+                    "paid": false
+                }
             ]
         },
         {
-            "id": "41",
+            "id": 41,
             "name": "Bob Barker",
             "type": "Student",
             "courses": [
                 
             ]
-        },
+        }
     ]
 }
