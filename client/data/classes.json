@@ -1,5 +1,5 @@
 {
-    "classes": [
+    "courses": [
         {
             "id": "js101",
             "name": "JavaScript 101",
@@ -11,7 +11,7 @@
         {
             "id": "advjs",
             "name": "Advanced JavaScript",
-            "description": "After this class you will know ALL THE JAVASCRIPT... or at least, the fun parts.",
+            "description": "After this course you will know ALL THE JAVASCRIPT... or at least, the fun parts.",
             "date": "2013-08-01",
             "students": 9,
             "max": 10
