@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Minimal chat client</title>
+
+    </head>
+
+    <body>
+        <h3>Send Message</h3>
+        <form id="send">
+            <input type="text" id="message" style="width: 30em;" />
+        </form>
+    
+        <h3>Messages Received</h3>
+        <div id="messages"></div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var messages = document.getElementById("messages");
+            var input = document.getElementById("message");
+            var form = document.getElementById("send");
+
+            var socket = io.connect("http://localhost:8686");
+
+            socket.on("message", function (data) {
+                console.log("message received:", data);
+                messages.innerHTML = messages.innerHTML + "<p>" + data.message + "</p>";
+            });
+
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+                socket.emit("incoming", { message: input.value });
+                input.value = "";
+                return false;
+            });
+        </script>
+    </body>
+</html>
