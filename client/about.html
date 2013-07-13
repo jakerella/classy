@@ -59,6 +59,16 @@
                                 do not expect the code to be production ready!
 							</p>
 
+                            <div class="video-container">
+                                <video src="video/about.mp4">
+                                    <p>
+                                      Your browser doesn't support HTML5 video.
+                                      You can <a href="video/about.mp4">download the video</a> instead!
+                                    </p>
+                                </video>
+                                <input type="button" value="Play" />
+                            </div>
+
 						</article>
 					</div>
 					
@@ -136,5 +146,15 @@
         <script src="script/lib/jquery-1.10.2.min.js"></script>
         <script src="script/lib/modernizr-2.6.2.min.js"></script>
         <script src="script/classy.js"></script>
+        <script src="script/User.js"></script>
+        <script src="script/courses.js"></script>
+        <script src="script/users.js"></script>
+        <script>
+            // Let's wait until the document is fully loaded 
+            // to initialize our modules
+            $(function() {
+                CLSY.init();
+            });
+        </script>
 	</body>
 </html>

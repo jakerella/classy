@@ -13,6 +13,23 @@
                 CLSY.users.addUser(user);
             });
 
+            this.createVideoControls();
+        },
+
+        createVideoControls: function() {
+            var video = $(".video-container video"),
+                button = $(".video-container input");
+
+            if (!video.length) { return; }
+
+            button.on("click", function() {
+                video.get(0).play();
+                button.fadeOut();
+            });
+            video.on("click", function() {
+                video.get(0).pause();
+                button.fadeIn();
+            });
         }
 
     };
