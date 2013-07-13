@@ -273,6 +273,40 @@
 /* Widgets                                                                       */
 /*********************************************************************************/
 
+    .video-container
+    {
+        position: relative;
+    }
+    .video-container video
+    {
+        width: 400px;
+    }
+    .video-container input
+    {
+        position: absolute;
+        top: 130px;
+        left: 130px;
+        width: 140px;
+
+        display: inline-block;
+        background: #0090c5;
+        color: #fff;
+        cursor: pointer;
+        padding: 0.7em 0;
+        font-size: 1.3em;
+        text-decoration: none;
+        border: none;
+        border-radius: 6px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        outline: 0;
+        -moz-transition: background-color .25s ease-in-out;
+        -webkit-transition: background-color .25s ease-in-out;
+        -o-transition: background-color .25s ease-in-out;
+        -ms-transition: background-color .25s ease-in-out;
+        transition: background-color .25s ease-in-out;
+    }
+
     .recently-viewed {
         display: none;
     }
