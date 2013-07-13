@@ -25,6 +25,19 @@
             });
 
             return user;
+        },
+
+        getInstructorForCourse: function(course) {
+            var user = null;
+            if (!course) { return; }
+
+            this.Instructors.forEach(function(u) {
+                if (u.courses.indexOf(course) > -1) {
+                    user = u;
+                }
+            });
+
+            return user;
         }
 
     };

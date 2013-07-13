@@ -41,6 +41,16 @@
             }
         ],
 
+        getCourse: function(id) {
+            var course = null;
+            this.data.forEach(function(c) {
+                if (c.id === id) {
+                    course = c;
+                }
+            });
+            return course;
+        },
+
         addCoursesToList: function(count, list) {
             // variable declaration
             var i, listItems = "";
@@ -60,7 +70,53 @@
             });
             // ...and add it to the DOM
             list.append(listItems);
+
+            this.setupCourseTooltips(list);
+        },
+
+        setupCourseTooltips: function(list) {
+            var self = this;
+
+            list = $(list);
+            if (!list.length) { return; }
+
+            var tooltip = $(".tooltip.course-detail");
+
+            list.on("click", "a", function(e) {
+                var id, prop, course, instructor;
+
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // courses.html#js101
+                id = $(this).prop("href").match(/#(.+)$/);
+                if (!id) { return; }
+                id = id[1];
+
+                course = self.getCourse(id);
+                if (!course) { return; }
+
+                instructor = CLSY.users.getInstructorForCourse(id);
+
+                for (prop in course) {
+                    tooltip.find(".course-" + prop).text(course[prop]);
+                }
+                tooltip
+                    .find(".course-instructor")
+                        .text( (instructor) ? instructor.name : "TBD" )
+                        .end()
+                    .css({
+                        right: (window.innerWidth - (e.pageX + 10)) + "px",
+                        top: (e.pageY + 10) + "px"
+                    })
+                    .show();
+            });
+
+            $("body").on("click", function() {
+                tooltip.hide();
+            });
         }
+
     };
     
 })(jQuery);

@@ -1,5 +1,8 @@
 
 (function() {
+
+    window.console = (window.console || { log: function(){} });
+
     window.CLSY = {
 
         init: function() {
