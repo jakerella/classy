@@ -1,3 +1,10 @@
+/*
+Simple chat server to be used with chat.html in this same directory
+
+To run, simple execute this from the command line: node chatServer.js
+Then, open http://localhost:8686 in one or more browsers
+ */
+
 var app = require("http").createServer(handler),
     io = require("socket.io").listen(app),
     fs = require("fs");
