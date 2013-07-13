@@ -32,6 +32,21 @@
     };
     CLSY.Student.prototype = Object.create(CLSY.User.prototype);
     CLSY.Student.prototype.constructor = CLSY.Student;
+    CLSY.Student.prototype.register = function(course, paid) {
+        if (typeof course === "string") {
+            course = CLSY.courses.getCourse(course);
+        } else if (!course.id && course.students) {
+            return;
+        }
+        paid = !!paid;
+
+        if (course.students >= course.max) {
+            throw Error("Sorry, but this course is full!");
+        }
+
+        this.courses.push({ "id": course.id, "paid": paid });
+        course.students++;
+    };
 
 
     CLSY.Instructor = function Instructor(data) {
