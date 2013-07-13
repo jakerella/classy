@@ -14,7 +14,8 @@
                 "description": "After this course you will know ALL THE JAVASCRIPT... or at least, the fun parts.",
                 "date": "2013-08-01",
                 "students": 9,
-                "max": 10
+                "max": 10,
+                "location": [42.499650, -71.583652]
             },
             {
                 "id": "html5",
@@ -22,7 +23,8 @@
                 "description": "Multimedia, drag and drop, FileReaders, oh my! You'll learn about these and more.",
                 "date": "2013-09-01",
                 "students": 0,
-                "max": 10
+                "max": 10,
+                "location": [42.359051, -71.063004]
             },
             {
                 "id": "intnode",
@@ -30,7 +32,8 @@
                 "description": "You'll need a basic understanding of Node, but we'll dive into some core features and useful libraries.",
                 "date": "2013-08-17",
                 "students": 10,
-                "max": 10
+                "max": 10,
+                "location": [42.257825, -71.803207]
             },
             {
                 "id": "js101",
@@ -38,11 +41,12 @@
                 "description": "Everything you always wanted to know about JavaScript, but were afraid to ask.",
                 "date": "2013-07-30",
                 "students": 5,
-                "max": 10
+                "max": 10,
+                "location": [42.280182, -71.407700]
             }
         ],
 
-        init: function() {
+        setupRecentCourses: function() {
             var self = this;
 
             self.checkForAndStoreRecentCourse();
@@ -181,6 +185,44 @@
             section.show();
 
             this.setupCourseTooltips(list);
+        },
+
+        displayCourseListings: function(table) {
+            var self = this;
+
+            table = $(table);
+            if (!table.length) { return; }
+
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    self.buildCourseTable(table, [ position.coords.latitude, position.coords.longitude ]);
+                },
+                function(error) {
+                    // We can let these slide, just means the distance will be "???"
+                    self.buildCourseTable(table, null);
+                }
+            );
+        },
+
+        buildCourseTable: function(table, loc) {
+            var tableRows = "";
+
+            this.data.forEach(function(course) {
+                var distance = ((loc) ? CLSY.getDistance(course.location, loc) : null),
+                    instructor = CLSY.users.getInstructorForCourse(course.id);
+
+                tableRows += 
+                    "<tr>" + 
+                    "<th><a href='courses.html#" + course.id + "'>" + course.id + "</a></th>" + 
+                    "<td>" + course.name + "</td>" + 
+                    "<td>" + course.date + "</td>" + 
+                    "<td>" + ((instructor) ? instructor.name : "TBD") + "</td>" + 
+                    "<td>" + (course.max - course.students) + " seats open</td>" + 
+                    "<td>" + ((distance) ? (Math.floor(distance) + " mi") : "?") + "</td>" + 
+                    "</tr>";
+            });
+
+            table.find("tbody").html(tableRows);
         }
 
     };
