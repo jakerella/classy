@@ -53,8 +53,34 @@
 							<h2>Register Now</h2>
 
 							<p>
-                                Here you can register for courses...
+                                Please complete the form below to begin the registration process:
 							</p>
+
+                            <form>
+                                <fieldset>
+                                    <legend>Basic Info</legend>
+                                    <div>
+                                        <label>Name</label>
+                                        <input type="text" />
+                                    </div>
+                                    <div>
+                                        <label>Email</label>
+                                        <input type="email" />
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend>Profile Pic</legend>
+                                    <div>
+                                        <label>Take a profile shot!</label><br />
+                                        <div class="profile-pic-camera"></div>
+                                    </div>
+                                    <div>
+                                        Or you can <label>upload an image</label>:
+                                        <input type="file" />
+                                    </div>
+                                </fieldset>
+                            </form>
 
 						</article>
 					</div>
@@ -118,5 +144,16 @@
         <script src="script/lib/jquery-1.10.2.min.js"></script>
         <script src="script/lib/modernizr-2.6.2.min.js"></script>
         <script src="script/classy.js"></script>
+        <script src="script/User.js"></script>
+        <script src="script/courses.js"></script>
+        <script src="script/users.js"></script>
+        <script>
+            // Let's wait until the document is fully loaded 
+            // to initialize our modules
+            $(function() {
+                CLSY.init();
+                CLSY.users.setupProfilePicCamera(".profile-pic-camera");
+            });
+        </script>
 	</body>
 </html>
