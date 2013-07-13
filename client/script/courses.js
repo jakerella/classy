@@ -187,7 +187,7 @@
             this.setupCourseTooltips(list);
         },
 
-        displayCourseListings: function(table) {
+        displayCourseListings: function(table, cb) {
             var self = this;
 
             table = $(table);
@@ -195,17 +195,19 @@
 
             navigator.geolocation.getCurrentPosition(
                 function(position) {
-                    self.buildCourseTable(table, [ position.coords.latitude, position.coords.longitude ]);
+                    self.buildCourseTable(table, [ position.coords.latitude, position.coords.longitude ], cb);
                 },
                 function(error) {
                     // We can let these slide, just means the distance will be "???"
-                    self.buildCourseTable(table, null);
+                    self.buildCourseTable(table, null, cb);
                 }
             );
         },
 
-        buildCourseTable: function(table, loc) {
+        buildCourseTable: function(table, loc, cb) {
             var tableRows = "";
+
+            cb = (cb || function(){});
 
             this.data.forEach(function(course) {
                 var distance = ((loc) ? CLSY.getDistance(course.location, loc) : null),
@@ -213,7 +215,7 @@
 
                 tableRows += 
                     "<tr>" + 
-                    "<th><a href='courses.html#" + course.id + "'>" + course.id + "</a></th>" + 
+                    "<th>" + course.id + "</th>" + 
                     "<td>" + course.name + "</td>" + 
                     "<td>" + course.date + "</td>" + 
                     "<td>" + ((instructor) ? instructor.name : "TBD") + "</td>" + 
@@ -223,6 +225,55 @@
             });
 
             table.find("tbody").html(tableRows);
+            cb();
+        },
+
+        setupDragSaving: function(draggables, dest) {
+            var dragged, list,
+                saved = localStorage.getItem("savedCourses"),
+                self = this;
+
+            draggables = $(draggables);
+            dest = $(dest);
+            if (!draggables.length || !dest.length) { return; }
+
+            list = dest.find("ul");
+            saved = (saved) ? JSON.parse(saved) : [];
+
+            draggables
+                .prop("draggable", "true")
+                .on("drag", function() {
+                    dragged = $(this);
+                    dest.addClass("drop-highlight");
+                })
+                .on("dragend", function() {
+                    dest.removeClass("drop-highlight");
+                });
+
+            dest
+                .on("dragover", function(e) {
+                    e.preventDefault();
+                })
+                .on("drop", function(e) {
+                    if (!dragged) { return; }
+
+                    var course = self.getCourse(dragged.text());
+                    if (course) {
+                        if (list.find("a[href='courses.html#" + course.id + "']").length) {
+                            return;
+                        }
+
+                        if (saved.indexOf(course.id) < 0) {
+                            saved.push(course.id);
+                            localStorage.setItem("savedCourses", JSON.stringify(saved));
+                        }
+
+                        list.append("<li><a href='courses.html#" + course.id + "'>" + course.name + "</a></li>");
+                    }
+                    dragged = null;
+                });
+
+            this.setupCourseTooltips(list);
         }
 
     };
