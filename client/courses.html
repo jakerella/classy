@@ -69,6 +69,12 @@
 							</footer>
 						</section>
 
+                        <section class="recently-viewed">
+                            <h3>Recently Viewed</h3>
+                            
+                            <ul></ul>
+                        </section>
+
 					</div>
 
 				</div>
@@ -114,9 +120,36 @@
             </footer>
         </div>
 
+        <div class="tooltip course-detail">
+            <h4 class="title">
+                <span class="course-name"></span>
+                (<span class="course-id"></span>)
+            </h4>
+            <p class="course-date"></p>
+            <p class="course-description"></p>
+            <p class="instructor-info">Instructor: <span class="course-instructor"></span></p>
+            <p class="course-enrollment">
+                <span class="course-students"></span> of
+                <span class="course-max"></span> seats filled
+            </p>
+            <a href="courses.html" class="button button-icon button-icon-info">View Course</a>
+        </div>
+        
+
         <script src="script/lib/es5-shim.min.js"></script>
         <script src="script/lib/jquery-1.10.2.min.js"></script>
         <script src="script/lib/modernizr-2.6.2.min.js"></script>
         <script src="script/classy.js"></script>
+        <script src="script/User.js"></script>
+        <script src="script/courses.js"></script>
+        <script src="script/users.js"></script>
+        <script>
+            // Let's wait until the document is fully loaded 
+            // to initialize our modules
+            $(function() {
+                CLSY.init();
+                CLSY.courses.init();
+            });
+        </script>
 	</body>
 </html>

@@ -7,7 +7,7 @@
 
         init: function() {
             
-            this.courses.addCoursesToList(3, ".sidebar .upcoming ul");
+            this.courses.addCoursesToList(3, ".upcoming ul");
             
             userData.forEach(function(user) {
                 CLSY.users.addUser(user);

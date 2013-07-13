@@ -5,7 +5,8 @@
     window.CLSY = (window.CLSY || {});
     
     CLSY.courses = {
-        
+        maxRecent: 3,
+
         data: [
             {
                 "id": "advjs",
@@ -40,6 +41,19 @@
                 "max": 10
             }
         ],
+
+        init: function() {
+            var self = this;
+
+            self.checkForAndStoreRecentCourse();
+            $(window).on("hashchange", function() {
+                self.checkForAndStoreRecentCourse();
+            });
+
+            if (localStorage.getItem("recentCourses")) {
+                self.showRecentCourses(JSON.parse(localStorage.getItem("recentCourses")));
+            }
+        },
 
         getCourse: function(id) {
             var course = null;
@@ -78,11 +92,13 @@
             var self = this;
 
             list = $(list);
-            if (!list.length) { return; }
+            if (!list.length || list.hasClass("has-tooltips")) { return; }
 
             var tooltip = $(".tooltip.course-detail");
 
-            list.on("click", "a", function(e) {
+            list
+                .addClass("has-tooltips")
+                .on("click", "a", function(e) {
                 var id, prop, course, instructor;
 
                 e.preventDefault();
@@ -105,6 +121,9 @@
                     .find(".course-instructor")
                         .text( (instructor) ? instructor.name : "TBD" )
                         .end()
+                    .find(".button")
+                        .prop("href", "courses.html#" + course.id)
+                        .end()
                     .css({
                         right: (window.innerWidth - (e.pageX + 10)) + "px",
                         top: (e.pageY + 10) + "px"
@@ -115,6 +134,53 @@
             $("body").on("click", function() {
                 tooltip.hide();
             });
+        },
+
+        checkForAndStoreRecentCourse: function() {
+            var recent,
+                course = document.location.hash.substr(1);
+            
+            if (!course || !course.length) { return; }
+            
+            recent = localStorage.getItem("recentCourses");
+            if (recent) {
+                recent = JSON.parse(recent);
+            } else {
+                recent = [];
+            }
+
+            if (recent.indexOf(course) < 0) {
+                recent.push(course);
+                
+                if (recent.length > this.maxRecent) {
+                    recent.shift();
+                }
+
+                localStorage.setItem("recentCourses", JSON.stringify(recent));
+                this.showRecentCourses(recent);
+            }
+        },
+
+        showRecentCourses: function(data) {
+            var self = this,
+                listItems = "",
+                section = $(".recently-viewed"),
+                list = section.find("ul, ol").html(""); // reset content
+
+            // build list item HTML...
+            data.forEach(function(id) {
+                var course = self.getCourse(id);
+                // if no course found, return true to proceed to next entry
+                // if we return; or return false; the loop will terminate
+                if (!course) { return true; }
+
+                listItems += "<li class='course'><a href='courses.html#" + course.id + "'>" + course.name + "</a></li>";
+            });
+            // ...and add it to the DOM
+            list.append(listItems);
+            section.show();
+
+            this.setupCourseTooltips(list);
         }
 
     };
