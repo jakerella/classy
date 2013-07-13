@@ -273,6 +273,19 @@
 /* Widgets                                                                       */
 /*********************************************************************************/
 
+    .saved-courses ul
+    {
+        min-height: 2em;
+    }
+    [draggable]
+    {
+        cursor: move;
+    }
+    .drop-highlight {
+        background-color: rgb(255, 68, 134);
+        background-color: rgba(255, 68, 134, 0.6);
+    }
+
     .full-course-list th
     {
         font-weight: bold;
