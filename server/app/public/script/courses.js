@@ -84,7 +84,7 @@
             i = 0;
             this.data.forEach(function(course) {
                 if (++i > count) { return false; }
-                listItems += "<li class='course'><a href='courses.html#" + course.id + "'>" + course.name + "</a></li>";
+                listItems += "<li class='course'><a href='/courses#" + course.id + "'>" + course.name + "</a></li>";
             });
             // ...and add it to the DOM
             list.append(listItems);
@@ -126,7 +126,7 @@
                         .text( (instructor) ? instructor.name : "TBD" )
                         .end()
                     .find(".button")
-                        .prop("href", "courses.html#" + course.id)
+                        .prop("href", "/courses#" + course.id)
                         .end()
                     .css({
                         right: (window.innerWidth - (e.pageX + 10)) + "px",
@@ -178,7 +178,7 @@
                 // if we return; or return false; the loop will terminate
                 if (!course) { return true; }
 
-                listItems += "<li class='course'><a href='courses.html#" + course.id + "'>" + course.name + "</a></li>";
+                listItems += "<li class='course'><a href='/courses#" + course.id + "'>" + course.name + "</a></li>";
             });
             // ...and add it to the DOM
             list.append(listItems);
@@ -259,7 +259,7 @@
 
                     var course = self.getCourse(dragged.text());
                     if (course) {
-                        if (list.find("a[href='courses.html#" + course.id + "']").length) {
+                        if (list.find("a[href='/courses#" + course.id + "']").length) {
                             return;
                         }
 
@@ -268,7 +268,7 @@
                             localStorage.setItem("savedCourses", JSON.stringify(saved));
                         }
 
-                        list.append("<li><a href='courses.html#" + course.id + "'>" + course.name + "</a></li>");
+                        list.append("<li><a href='/courses#" + course.id + "'>" + course.name + "</a></li>");
                     }
                     dragged = null;
                 });
