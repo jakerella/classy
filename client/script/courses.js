@@ -242,7 +242,7 @@
 
             draggables
                 .prop("draggable", "true")
-                .on("drag", function() {
+                .on("dragstart", function() {
                     dragged = $(this);
                     dest.addClass("drop-highlight");
                 })
