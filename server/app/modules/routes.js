@@ -16,3 +16,15 @@ exports.hasToken = function (req, res, next) {
 exports.index = function(req, res, next) {
     res.render("index", { "title": "Classy Home" });
 };
+
+exports.showAbout = function(req, res, next) {
+    res.render("about", { "title": "About Classy" });
+};
+
+exports.showCourses = function(req, res, next) {
+    res.render("courses", { "title": "Classy Course Listing" });
+};
+
+exports.showRegister = function(req, res, next) {
+    res.render("register", { "title": "Classy Registration" });
+};

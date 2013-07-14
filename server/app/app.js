@@ -27,10 +27,15 @@ app.use(function(err, req, res, next) {
 
 // GETs
 app.get("/", routes.index);
-//app.get("/class", routes.hasToken, routes.listClasses);
+app.get("/home", routes.index);
+app.get("/about", routes.showAbout);
+app.get("/courses", routes.showCourses);
+app.get("/register", routes.showRegister);
+
 
 // POSTs
 app.post("/", routes.index);
+
 
 // Start server
 app.listen(5000);

@@ -1,0 +1,83 @@
+<% include _open %>
+
+<% include _header %>
+
+<div class="main-wrapper">
+	<div class="container">
+		<div class="row">
+
+			<div class="content">
+				<article class="last">
+
+					<h2>Course Listings</h2>
+
+					<p>
+                        Here you can view all of our upcoming courses...
+					</p>
+
+                    <table class="full-course-list">
+                        <thead>
+                            <tr>
+                                <th>Course ID</th>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Instructor</th>
+                                <th>Seats Open</th>
+                                <th>Distance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+				</article>
+			</div>
+			
+			<div class="sidebar">
+
+				<section>
+					<h3>Like What You see?</h3>
+					
+					<footer>
+						<a href="/register" class="button button-icon button-icon-info">Register Now</a>
+					</footer>
+				</section>
+
+                <section class="saved-courses">
+                    <h3>Saved Courses</h3>
+                    
+                    <ul></ul>
+                </section>
+
+                <section class="recently-viewed">
+                    <h3>Recently Viewed</h3>
+                    
+                    <ul></ul>
+                </section>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<% include _footer %>
+
+<% include _tooltip %>
+
+<% include _scripts %>
+
+<script>
+    // Let's wait until the document is fully loaded 
+    // to initialize our modules
+    $(function() {
+        CLSY.init();
+        CLSY.courses.setupRecentCourses();
+        CLSY.courses.displayCourseListings(".full-course-list", function() {
+            CLSY.courses.setupDragSaving(".full-course-list tbody th", ".saved-courses");
+        });
+    });
+</script>
+
+<% include _close %>

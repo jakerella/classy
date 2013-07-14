@@ -1,0 +1,78 @@
+<% include _open %>
+
+<% include _header %>
+
+<div class="main-wrapper">
+	<div class="container">
+		<div class="row">
+
+			<div class="content">
+				<article class="last">
+
+					<h2>Register Now</h2>
+
+					<p>
+                        Please complete the form below to begin the registration process:
+					</p>
+
+                    <form>
+                        <fieldset>
+                            <legend>Basic Info</legend>
+                            <div>
+                                <label>Name</label>
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <label>Email</label>
+                                <input type="email" />
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Profile Pic</legend>
+                            <div>
+                                <label>Take a profile shot!</label><br />
+                                <div class="profile-pic-camera"></div>
+                            </div>
+                            <div>
+                                Or you can <label>upload an image</label>:
+                                <input type="file" />
+                            </div>
+                        </fieldset>
+                    </form>
+
+				</article>
+			</div>
+			
+			<div class="sidebar">
+
+				<section>
+					<h3>Subheading</h3>
+					
+					<footer>
+						<a href="courses.html" class="button button-icon button-icon-info">View Courses</a>
+					</footer>
+				</section>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<% include _footer %>
+
+<% include _tooltip %>
+
+<% include _scripts %>
+
+<script>
+    // Let's wait until the document is fully loaded 
+    // to initialize our modules
+    $(function() {
+        CLSY.init();
+        CLSY.users.setupProfilePicCamera(".profile-pic-camera");
+    });
+</script>
+
+<% include _close %>

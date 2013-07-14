@@ -1,5 +1,66 @@
 <% include _open %>
 
-<h2><%= title %></h2>
+<% include _header %>
+
+<div class="main-wrapper">
+    <div class="container">
+        <div class="row">
+
+            <div class="content">
+                <article class="last">
+
+                    <h2>Welcome!</h2>
+
+                    <p>
+                        Classy is an extremely simple course registration system 
+                        used to demonstrate some HTML5 and advanced JavaScript
+                        techniques.
+                    </p>
+
+                </article>
+            </div>
+            
+            <div class="sidebar">
+
+                <section>
+                    <h3>Looking for Courses?</h3>
+                    
+                    <footer>
+                        <a href="/courses" class="button button-icon button-icon-info">View Courses</a>
+                    </footer>
+                </section>
+
+                <section class="upcoming">
+                    <h3>Upcoming Courses</h3>
+
+                    <ul class="style2">
+                        <!-- <li><a href="courses.html#courseId">Course Name</a></li> -->
+                    </ul>
+
+                    <footer>
+                        <a href="/register" class="button button-icon button-icon-info">Register Now!</a>
+                    </footer>
+                    
+                </section>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<% include _footer %>
+
+<% include _tooltip %>
+
+<% include _scripts %>
+
+<script>
+    // Let's wait until the document is fully loaded 
+    // to initialize our modules
+    $(function() {
+        CLSY.init();
+    });
+</script>
 
 <% include _close %>

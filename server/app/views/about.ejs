@@ -1,0 +1,77 @@
+<% include _open %>
+
+<% include _header %>
+
+<div class="main-wrapper">
+	<div class="container">
+		<div class="row">
+
+			<div class="content">
+				<article class="last">
+
+					<h2>What is this?</h2>
+
+					<p>
+                        This is a demo app for teaching various JavaScript and 
+                        HTML topics. You can feel free to clone this repo for 
+                        instruction purposes (either learning or teaching), but 
+                        do not expect the code to be production ready!
+					</p>
+
+                    <div class="video-container">
+                        <video src="/video/about.mp4">
+                            <p>
+                              Your browser doesn't support HTML5 video.
+                              You can <a href="/video/about.mp4">download the video</a> instead!
+                            </p>
+                        </video>
+                        <input type="button" value="Play" />
+                    </div>
+
+				</article>
+			</div>
+			
+			<div class="sidebar">
+
+				<section>
+					<h3>What Now?</h3>
+					
+                    <p>
+                        If you want to work with these exercises, your 
+                        first step might be to clone or fork this repository
+                        on Github...
+                    </p>
+
+					<footer>
+						<a href="https://github.com/jakerella/classy" class="button button-icon button-icon-info">View on Github</a>
+					</footer>
+				</section>
+
+				<section>
+					<h3>Like what you see?</h3>
+					<p>
+                        Feel free to hit me up on 
+                        <a herf="http://twitter.com/jakerella">Twitter</a>
+                        (or anywhere else online for that matter).
+                    </p>
+				</section>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<% include _footer %>
+
+<% include _scripts %>
+
+<script>
+    // Let's wait until the document is fully loaded 
+    // to initialize our modules
+    $(function() {
+        CLSY.init();
+    });
+</script>
+
+<% include _close %>
